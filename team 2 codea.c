@@ -1,51 +1,40 @@
 #include <kipr/botball.h>
 
 int main()
+    
+
 {
-    clear_motor_position_counter(0);
-        while(get_motor_position_counter(0) <5900)
-        {
-            motor(0,100);
-            motor(2,100);
-        }
-    clear_motor_position_counter(2);
-        while(get_motor_position_counter(2) <1330)
-        {
-            motor(0,0);
-            motor(2,100);
-        }
-   
-     clear_motor_position_counter(0);
-        while(get_motor_position_counter(0) <5600)
-        {
-            motor(0,100);
-            motor(2,100);
+   enable_servos();//defalt servo position
+    set_servo_position(0,1440);
+    msleep(1500);    
+    
+    set_servo_position(2,988);
+    msleep(1000);
+    
+    mav(0,1200);//turn to go twards building
+    mav(2,0);
+    msleep(1500);
+    
+    mav(0,1500);
+    mav(2,1500);
+    msleep(3500);
+    
+    set_servo_position(0,908);//move firetruck
+    msleep(1500);
+    
+    
+    set_servo_position(2,0);
+    msleep(1000);
+    
+    set_servo_position(2,988);
+    msleep(1000);    
+    
+    
+    
+    
+    camera_open_black();
+    camera_update();
+   get_object_count(0);
      
-        }
-    set_servo_position(0,1897);
-     clear_motor_position_counter(2);
-        while(get_motor_position_counter(2) <1333)
-        {
-            motor(0,0);
-            motor(2,100);
-        }
-         clear_motor_position_counter(0);
-    while(get_motor_position_counter(0) < 500) 
-    {
-        motor(0,70);
-        motor(2,100);
-    }
-    
-    enable_servos();
-    set_servo_position(0,1397);
-    
-    
-    clear_motor_position_counter(2);
-    while(get_motor_position_counter(2) <9000)
-    {
-        motor(0,100);
-        motor(2,100);
-    }
-     
-   return 0;
+    return 0;
 }
